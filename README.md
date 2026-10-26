@@ -1,111 +1,189 @@
 
-# DemoBlaze End-to-End Automation Testing Project
+# 🛒 Demoblaze Website Automation Testing Project
 
-## Project Overview
-This project automates end-to-end test scenarios for the DemoBlaze e-commerce website using Selenium WebDriver, Java, Cucumber, and TestNG.
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white)
+![Cucumber](https://img.shields.io/badge/Cucumber-23D96C?style=for-the-badge&logo=cucumber&logoColor=white)
+![TestNG](https://img.shields.io/badge/TestNG-FF6F00?style=for-the-badge)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 
-The project uses the Page Object Model (POM) to organize page elements and reusable actions. Cucumber feature files describe test scenarios in simple Gherkin language.
+![Project Status](https://img.shields.io/badge/Project-In%20Progress-orange?style=flat-square)
 
-## Application Under Test
-- Website: https://www.demoblaze.com/
-- Application Type: E-commerce website
-- Testing Type: Web UI Automation and End-to-End Testing
+## 🔵 Project Overview
 
-## Tools and Technologies
-- Java
-- Selenium WebDriver
-- Cucumber
-- TestNG
-- Maven (if configured)
-- Chrome Browser
-- Eclipse IDE
-- Git and GitHub
+This project focuses on automating important user flows of the **Demoblaze e-commerce website** using Selenium WebDriver, Java, Cucumber, and TestNG.
 
-## Project Structure
+The project follows the **Page Object Model (POM)** approach to keep page locators and actions separate from test steps.
+
+The goal is to practice web application automation, BDD-style test scenarios, and end-to-end testing.
+
+🌐 **Application Under Test:** https://www.demoblaze.com/
+
+## 🟢 Objectives
+
+- Automate the user sign-up process.
+- Practice login functionality testing.
+- Test product selection and add-to-cart functionality.
+- Practice logout functionality testing.
+- Write readable scenarios using Cucumber feature files.
+- Organize page actions using the Page Object Model.
+- Generate an HTML test report.
+
+## 🟠 Technologies and Tools Used
+
+| Technology / Tool | Purpose |
+|---|---|
+| Java | Programming language |
+| Selenium WebDriver | Browser automation |
+| Cucumber | BDD-style test scenarios |
+| TestNG | Test execution framework |
+| Chrome | Browser for testing |
+| Eclipse IDE | Development environment |
+| Maven | Dependency management, if configured |
+| Git and GitHub | Version control and project hosting |
+
+## 🟣 Project Structure
 
 ```text
 Demoblaze_Project/
+│
 ├── src/
 │   └── test/
 │       └── java/
 │           ├── base/
 │           │   └── Basetest.java
+│           │
 │           ├── pages/
 │           │   ├── Login.java
 │           │   └── SignUp.java
+│           │
 │           ├── Runner/
 │           │   └── runner.java
+│           │
 │           └── stepdefinitions/
 │               └── PurchaseTestE2E.java
+│
 ├── features/
 │   └── featuresE2E.feature
+│
 ├── pom.xml
+│
 └── README.md
 ```
 
-*Adjust the structure according to your actual project folders.*
 
-## Project Components
 
-### 1. Base Test Class
-The `Basetest` class initializes ChromeDriver, opens the DemoBlaze website, maximizes the browser, sets an implicit wait of five seconds, and closes the browser session.
+## 🔴 Test Scenarios
 
-### 2. Sign Up Page
-The `SignUp` class contains reusable methods to open the signup dialog, enter a username and password, and submit the signup form. The username is generated dynamically to help avoid duplicate usernames.
+The feature file defines the following scenarios:
 
-### 3. Login Page
-The `Login` class contains locators and reusable methods to open the login dialog, enter credentials, and submit the login form.
+### 1. User Sign-Up
 
-### 4. Cucumber Feature File
-The `featuresE2E.feature` file defines four scenarios using Gherkin syntax:
+- Open the Demoblaze website.
+- Click the Sign Up button.
+- Enter a username and password.
+- Submit the sign-up form.
+- Verify the success alert.
 
-1. Verify that a user can sign up successfully.
-2. Verify that a user can log in successfully.
-3. Verify that a product can be added to the cart.
-4. Verify that a user can log out successfully.
+### 2. User Login
 
-### 5. Step Definitions
-The `PurchaseTestE2E` class connects Gherkin steps to Java methods and uses TestNG assertions to validate signup alert text.
+- Open the Demoblaze website.
+- Click the Log In button.
+- Enter valid credentials.
+- Submit the login form.
+- Verify successful login.
 
-### 6. Test Runner
-The `runner` class extends `AbstractTestNGCucumberTests` and configures the feature file, step definition package, console output, and HTML report.
+### 3. Add Product to Cart
 
-## Test Scenarios
+- Open the Demoblaze website.
+- Select a phone from the product category.
+- Click Add to Cart.
+- Verify that the product is added successfully.
 
-| Scenario | Purpose |
-|---|---|
-| User Sign Up | Verify the signup process and success alert |
-| User Login | Verify login with valid credentials |
-| Add Product to Cart | Verify product selection and cart functionality |
-| User Logout | Verify that a user can log out |
+### 4. User Logout
 
-**Note:** The feature file defines all four scenarios, but the login, cart, and logout step-definition methods are currently empty. Those scenarios require implementation before they can be considered successfully automated.
+- Open the Demoblaze website.
+- Log in with valid credentials.
+- Click Log Out.
+- Verify that the user is logged out.
 
-## How to Run the Project
+**Implementation status:** The sign-up steps are implemented in the provided code. The login, cart, and logout step-definition methods are currently empty and need to be completed before those scenarios can be considered automated.
+
+## 🟡 Framework Design
+
+### Page Object Model (POM)
+
+The project uses separate classes for browser setup and page-level actions.
+
+- **Basetest.java:** Launches Chrome, opens the website, maximizes the window, and sets an implicit wait.
+- **SignUp.java:** Stores sign-up locators and actions.
+- **Login.java:** Stores login locators and actions.
+- **PurchaseTestE2E.java:** Contains Cucumber step definitions.
+- **runner.java:** Configures Cucumber execution and the HTML report.
+
+## 🟤 Browser Setup
+
+The base test class performs these actions:
+
+1. Launches the Chrome browser.
+2. Opens https://www.demoblaze.com/.
+3. Maximizes the browser window.
+4. Sets an implicit wait of five seconds.
+5. Closes the browser using `driver.quit()` when cleanup is called.
+
+## 🔵 How to Run the Project
 
 1. Clone or download this repository.
-2. Import the project into Eclipse as an Existing Maven Project, if applicable.
-3. Wait for the required dependencies to download.
-4. Ensure Java and Chrome are installed.
-5. Open the `runner` class.
-6. Right-click and select Run As → TestNG Test.
-7. Review the test execution results.
+2. Import the project into Eclipse.
+3. Make sure Java, Selenium, Cucumber, and TestNG dependencies are configured.
+4. Confirm that the feature-file path and Cucumber glue package match the project structure.
+5. Open `runner.java`.
+6. Run it as a TestNG test.
+7. Check the generated report after execution.
 
-## Test Reporting
-The runner is configured to generate a Cucumber HTML report at:
+## 🟢 Test Report
 
-`target/cucumberReport.html`
+The Cucumber runner is configured to generate an HTML report at:
 
-## Learning Outcomes
-- Selenium WebDriver automation.
-- Page Object Model (POM).
-- Cucumber and Gherkin syntax.
-- TestNG integration and assertions.
-- End-to-end testing concepts.
-- Git and GitHub project management.
+```text
+target/cucumberReport.html
+```
 
-## Author
-Samruddhi Jagtap
+The report is generated when the test execution and report configuration run successfully.
 
-## GitHub Repository
-https://github.com/Samuuj9922/Demoblaze_Project
+## 🟠 Skills Practiced
+
+- Manual and automation testing concepts
+- Selenium WebDriver
+- Java programming
+- Cucumber feature files and step definitions
+- Page Object Model (POM)
+- TestNG test execution
+- Web element locators
+- End-to-end testing
+- Git and GitHub
+
+## 🟣 Future Improvements
+
+- Complete login automation and validation.
+- Implement add-to-cart and cart verification.
+- Implement logout and login-state validation.
+- Add assertions for each completed scenario.
+- Improve handling of alerts and synchronization.
+- Add screenshots for failed test cases.
+- Improve test data management.
+- Integrate the project with a continuous integration tool.
+
+## 🔴 Author
+
+**Samruddhi Jagtap**
+
+Computer Engineering Graduate | QA Testing Fresher
+
+GitHub: [Samuuj9922](https://github.com/Samuuj9922)
+
+Project Repository: [Demoblaze_Project](https://github.com/Samuuj9922/Demoblaze_Project)
+
+---
+
+
